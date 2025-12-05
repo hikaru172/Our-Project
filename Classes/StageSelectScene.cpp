@@ -1,5 +1,5 @@
 #include "StageSelectScene.h"
-//#include "GameScene.h"
+#include "GameScene.h"
 
 USING_NS_CC;
 
@@ -105,13 +105,11 @@ bool StageSelectScene::init()
 //Ref*はcocos2d-xの基底クラス、senderはイベントを発生させたオブジェクト
 void StageSelectScene::onButtonPressed(Ref* sender)
 {
-    ////dynamic_castを使ってRef* をMenuItem*にキャストしている
-    //auto item = dynamic_cast<MenuItem*>(sender);
-    ////タグを取得
-    //int stageNumber = item->getTag();
+    //dynamic_castを使ってRef* をMenuItem*にキャストしている
+    auto item = dynamic_cast<MenuItem*>(sender);
+    //タグを取得
+    int stageNumber = item->getTag();
 
-    //auto scene = GameScene::createScene(stageNumber);
-    //Director::getInstance()->replaceScene(TransitionFade::create(1.0f, scene));
-
-    Director::getInstance()->end();
+    auto scene = GameScene::createScene(stageNumber);
+    Director::getInstance()->replaceScene(TransitionFade::create(1.0f, scene));
 }
