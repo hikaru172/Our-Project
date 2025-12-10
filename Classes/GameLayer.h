@@ -21,6 +21,9 @@ private:
     int _stageNumber;
 
     void setupStage(); // ステージ初期化用
+
+    bool _leftlimited = false;
+	bool _rightlimited = false;
 };
 
 #endif //__GAME_LAYER_H__

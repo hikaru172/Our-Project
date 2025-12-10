@@ -20,12 +20,16 @@ GameScene* GameScene::create(int stageNumber) {
 }
 
 bool GameScene::init(int stageNumber) {
-    if (!Scene::initWithPhysics()) {  // 物理付きシーンを作成
+    if (!Scene::initWithPhysics()) {  //物理付きシーンを作成
         return false;
     }
 
     _stageNumber = stageNumber;
-    CCLOG("GameScene initialized with stage %d", _stageNumber);
+
+    //重力を設定
+    auto world = this->getPhysicsWorld();
+    world->setGravity(Vec2(0, -980));
+
 
     // ゲーム用のLayerを追加
     auto gameLayer = GameLayer::create(_stageNumber);
