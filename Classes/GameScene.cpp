@@ -1,5 +1,7 @@
 #include "GameScene.h"
 #include "GameLayer.h"
+#include "UILayer.h"
+#include "BGLayer.h"
 
 USING_NS_CC;
 
@@ -28,12 +30,19 @@ bool GameScene::init(int stageNumber) {
 
     //d—Í‚ðÝ’è
     auto world = this->getPhysicsWorld();
-    world->setGravity(Vec2(0, -980));
+    world->setGravity(Vec2(0, -750));
 
 
     // ƒQ[ƒ€—p‚ÌLayer‚ð’Ç‰Á
-    auto gameLayer = GameLayer::create(_stageNumber);
-    this->addChild(gameLayer);
+    auto gameLayer = GameLayer::createLayer(_stageNumber);
+    gameLayer->setName("GameLayer");
+    this->addChild(gameLayer, 1);
+
+    auto UILayer = UILayer::createLayer(_stageNumber);
+    this->addChild(UILayer, 2);
+
+    auto BGLayer = BGLayer::createLayer(_stageNumber);
+    this->addChild(BGLayer, 0);
 
     return true;
 }

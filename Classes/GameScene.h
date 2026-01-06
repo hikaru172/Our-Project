@@ -6,12 +6,11 @@
 class GameScene : public cocos2d::Scene
 {
 public:
-    //基本クラスのcocos2d::Scene*型にしても動きはする
+    //多態性により、基本クラスのcocos2d::Scene*型にしても動きはする
     static GameScene* createScene(int);
 
     virtual bool init(int);
 
-    // 通常のCREATE_FUNCでは引数が渡せないので自前で用意
     static GameScene* create(int);
 
 private:
